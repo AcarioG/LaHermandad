@@ -1,0 +1,27 @@
+﻿@model IEnumerable<La_Hermandad.Models.Comics>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Comic Agregados</h2>
+
+<p>
+    <button class="btn btn-default">@Html.ActionLink("Create New", "Create")</button>
+</p>    
+
+    <div class="row" >
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <a href="@Url.Action("Details", "Comics", new {Id = item.IdComics })">
+                        <img src="@Url.Action("convertirImagen", "Comics", new {IdComics = item.IdComics})" />
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Titulo)
+                        </div>
+                    </a>
+                
+                </div>
+            }
+    </div>
+        
