@@ -1,34 +1,38 @@
-﻿@model  La_Hermandad.Models.Comics
+﻿@model La_Hermandad.Models.Comics
 
 @{
-      ViewBag.Title = "Details";
-}
-<div id="titulos">
+    /**/
 
-</div>
-<div class="row">
-    <div class="col-sm-3">
-        <img src="@Url.Action("convertirImagen", "Comics", new {IdComics = Model.IdComics })" />
-    </div>
-    <div class="col-md-9">
-        <div>
-            <hr />
-            <h2>@Html.DisplayFor(Model => Model.Titulo)</h2>
-            <hr />
-        </div>
-        <p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        </p>
-    </div>
-</div>
+    ViewBag.Title = "Details";
+}
+
+
 <hr />
 
-    <div class="row">
-        <div class="col-md-3">
-            <img src="@Url.Action("PaginasComics", "Comics", new {IdC = Model.IdComics})" />
-        </div>
+<div class="row" >
+   
+                <div class="col-md-3">
+                 
+                        <img src="@Url.Action("convertirImagen", "Comics", new {IdComics = Model.IdComics})" />
+                        <div>
+                            @Html.DisplayFor(modelItem => Model.Titulo)
+                        </div>
+                    
+                
+                </div>
+            
     </div>
 
+<div class="row">
+    @foreach (var item in Model.Pages)
+    {
+
+        <div class="col-md-3">
+            <img src="@Url.Action("PaginasComics","Comics", new { IdPagina = item.IdPaginaC })" alt="imagen" />
+        </div>
+
+    }
+</div>
 
 <hr />
 <p>

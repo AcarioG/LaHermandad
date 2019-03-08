@@ -10,15 +10,11 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
-#imagenesindex {
-    margin-top: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    padding: 8px;
-    border:2px solid #ddd;
-    background-color: #fff;
-
+img.paginas {
+    padding: 10px;
+    width: 550px;
+    height: 600px;
+    
 }
 
 p{

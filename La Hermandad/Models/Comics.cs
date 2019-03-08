@@ -15,9 +15,8 @@ namespace La_Hermandad.Models
         public string Titulo { get; set; }
         public byte[] Portada { get; set; }
         public DateTime FechadeEstreno { get; set; }
-     
-        public ICollection<PaginasComics> Pages { get; set; }
 
+        public virtual ICollection<PaginasComics> Pages { get; set; }
 
     }
 }

@@ -13,6 +13,7 @@ namespace La_Hermandad.Models
         [Key]
         public int IdPaginaC { get; set; }
         public byte[] Paginas {get; set;}
-        public int Id_Comic { get; set; }
+        public Nullable<int> Id_Comic { get; set; }
+
     }
 }

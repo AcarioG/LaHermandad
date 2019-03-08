@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-//using System.Web.UI.WebControls;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -33,6 +32,11 @@ namespace La_Hermandad.Controllers
         public ActionResult PaginasComics(string IdPagina)
         {
             var PaginasC = db.Paginas.Where(x => x.IdPaginaC.ToString() == IdPagina).FirstOrDefault();
+            if (PaginasC == null)
+            {
+                return HttpNotFound();
+            }
+
             return File(PaginasC.Paginas, "imagen/jpeg");
 
         }
@@ -63,13 +67,11 @@ namespace La_Hermandad.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Titulo,FechadeEstreno")] Comics comics,PaginasComics paginas, HttpPostedFileBase imagenPortada, IEnumerable<HttpPostedFileBase> Paginas)
+        public ActionResult Create([Bind(Include = "Titulo,FechadeEstreno")] Comics comics, HttpPostedFileBase imagenPortada, IEnumerable<HttpPostedFileBase> Paginas)
         {
 
             if (ModelState.IsValid)
             {
-                try
-                {
 
                     if (imagenPortada != null && imagenPortada.ContentLength > 0)
                     {
@@ -99,15 +101,6 @@ namespace La_Hermandad.Controllers
                             }
                         comics.Pages = list;
                         }
-                  
-                    //db.Paginas.AddRange(Paginas);
-                    //db.SaveChanges();
-                }
-                catch
-                {
-
-
-                }
 
                 db.Comics.Add(comics);
                 db.SaveChanges();
